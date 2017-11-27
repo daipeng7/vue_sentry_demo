@@ -73,3 +73,13 @@ PROTOCOL 通常会是 http 或者 https，HOST 为 Sentry 服务的主机名和�
 
 点击进去可以查看详情，且会将报错信息默认发送到注册邮箱。
 ![](https://segmentfault.com/img/bVYeFv)
+
+五、sourceMap release version 上传
+--------------
+现在的前端项目基本都会使用工具进行编译打包压缩等（webpack）。那么，这样的代码在发布后一旦报错返回的源码可能你就很难找到具体位置在哪里了。
+
+![](https://user-gold-cdn.xitu.io/2017/11/23/15fe8746073593f3?w=1024&h=415&f=png&s=127717)
+一般这种情况我们可以选择在sentry中创建一个release版本，并且将sourceMap提交上去。产品发布时不发布sourceMap的。当出现报错时，提交错误到sentry，回去匹配相应版本的release版本的sourceMap然后你看见的代码就是报错源码了。
+
+![](https://user-gold-cdn.xitu.io/2017/11/23/15fe877129a2f813?w=1468&h=449&f=png&s=27314)
+sourceMap怎样创建release、上传、删除等API可以从官方文档按需查看，都很[详细](https://user-gold-cdn.xitu.io/2017/11/23/15fe879f61fa7e56)。
